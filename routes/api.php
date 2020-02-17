@@ -12,16 +12,17 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
+Route::group(['middleware' => ['cors']], function () {
 
-Route::get('treatments', function() {
-    return App\Treatment::with('subservice.service')->get();
-});
+    Route::get('treatments', function() {
+        return App\Treatment::with('subservice.service')->get();
+    });
 
-Route::get('treatments/{id}', function($id) {
-    return App\Treatment::where('id',$id)->with('subservice.service')->get();
+    Route::get('treatments/{id}', function($id) {
+        return App\Treatment::where('id',$id)->with('subservice.service')->get();
+    });
 });
