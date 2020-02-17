@@ -18,8 +18,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 
-Route::get('treatmens', function() {
-    // If the Content-Type and Accept headers are set to 'application/json', 
-    // this will return a JSON structure. This will be cleaned up later.
-    return App\Article::all();
+Route::get('treatments', function() {
+    return App\Treatment::with('subservice.service')->get();
+});
+
+Route::get('treatments/{id}', function($id) {
+    return App\Treatment::where('id',$id)->with('subservice.service')->get();
 });

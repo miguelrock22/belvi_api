@@ -11,8 +11,8 @@ class Treatment extends Model
     ];
 
     //======= RELATIONSHIPS //=======
-    public function service()
+    public function subservice()
     {
-        return $this->belongsTo('App\Service');
+        return $this->belongsTo('App\Subservice');
     }
 }

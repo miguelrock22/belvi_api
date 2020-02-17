@@ -16,7 +16,7 @@ class Subservice extends Model
         return $this->belongsTo('App\Service');
     }
 
-    public function treatments()
+    public function treatment()
     {
         return $this->hasMany('App\Treatment');
     }
